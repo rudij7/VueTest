@@ -1,28 +1,42 @@
 <template>
-  <v-container>
-    <v-simple-table>
-      <tbody>
-        <tr v-for="(item, index) in data" :key="item.id">
-          <td>{{ item.id }}</td>
-          <td>
-            <v-text-field
-              v-model="item.value"
-              :value="item.value"
-              flat
-              :disabled="!(disabled == index)"
-            ></v-text-field>
-          </td>
-          <v-btn v-if="disabled != index" v-on:click="edit(index)">Edit</v-btn>
-          <v-btn v-if="disabled == index" v-on:click="edit(index)">Save</v-btn>
-          &nbsp;&nbsp;&nbsp;<v-btn v-on:click="remove(index)">Delete</v-btn>
-        </tr>
-      </tbody>
-    </v-simple-table>
-  </v-container>
+  <table>
+    <tbody>
+      <tr v-for="(item, index) in data" :key="item.id">
+        <td>{{ item.id }}</td>
+        <td>
+          <input
+            type="text"
+            v-model="item.value"
+            :disabled="!(disabled == index)"
+          />
+        </td>
+        <td>
+          <button
+            type="button"
+            v-if="disabled != index"
+            v-on:click="edit(index)"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            v-if="disabled == index"
+            v-on:click="edit(index)"
+          >
+            Save
+          </button>
+          &nbsp;&nbsp;&nbsp;<button type="button" v-on:click="remove(index)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </template>
 
 <script>
 import items from "./json/tableData7Records.json";
+import "./helloworld.css";
 
 export default {
   name: "HelloWorld",
