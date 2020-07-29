@@ -6,6 +6,7 @@
           <td>{{ item.id }}</td>
           <td>
             <v-text-field
+              v-model="item.value"
               :value="item.value"
               flat
               :disabled="!(disabled == index)"
